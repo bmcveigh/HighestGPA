@@ -4,13 +4,13 @@ import java.util.List;
 /**
  * Created by brianmcveigh on 4/5/16.
  */
-public class StudentGenerator {
+public class StudentFactory {
     private List<Student> students;
 
     public static final double HIGHEST_POSSIBLE_GPA = 4.0;
     public static final double LOWEST_POSSIBLE_GPA = 0.0;
 
-    public StudentGenerator() {
+    public StudentFactory() {
         students = new ArrayList<Student>();
     }
 
@@ -69,5 +69,17 @@ public class StudentGenerator {
         }
 
         return numerator / denominator;
+    }
+
+    public String generateReport() {
+        String output = "Here are the list of student's and their GPA's:\n\n";
+        int counter = 1;
+
+        for (Student student : students) {
+            output += "" + counter + ". " + student.getName() + " " + student.getGpa() + "\n";
+            counter++;
+        }
+
+        return output;
     }
 }
